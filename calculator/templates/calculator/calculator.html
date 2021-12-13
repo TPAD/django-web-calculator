@@ -1,0 +1,162 @@
+<!-- 
+Tony Padilla 
+apadilla
+17-437 S20 Homework 3 Django Calculator
+-->
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="/static/calculator/calculator.css">
+		<title>Calculator</title>
+	</head>
+
+	<body>
+		<div class="title">
+			Calculator
+		</div>
+		<form class="calculator" action="calculator" method="post"> 
+			<input class="display-area" id="calc-display" type="text" name="display" value="{{display}}" readonly/>
+			<input type="hidden" name="operation" value={{operation}}>
+			<input type="hidden" name="oldVal" value={{oldVal}}>
+			<input type="hidden" name="newVal" value={{newVal}}>
+			<div class="row">
+				<button class="digit-button" id="calc-key-7" name="button" value="7">
+					7
+				</button>
+				<button class="digit-button" id="calc-key-8" name="button" value="8">
+					8
+				</button>
+				<button class="digit-button" id="calc-key-9" name="button" value="9">
+					9
+				</button>
+				<button class="op-button" id="calc-plus" name="button" value="plus">
+					&plus;
+				</button>
+			</div>
+			<div class="row">
+				<button class="digit-button" id="calc-key-4" name="button" value="4">
+					4
+				</button>
+				<button class="digit-button" id="calc-key-5" name="button" value="5">
+					5
+				</button>
+				<button class="digit-button" id="calc-key-6" name="button" value="6">
+					6
+				</button>
+				<button class="op-button" id="calc-minus" name="button" value="minus">
+					&minus;
+				</button>
+			</div>
+			<div class="row">
+				<button class="digit-button" id="calc-key-1" name="button" value="1">
+					1
+				</button>
+				<button class="digit-button" id="calc-key-2" name="button" value="2">
+					2
+				</button>
+				<button class="digit-button" id="calc-key-3" name="button" value="3">
+					3
+				</button>
+				<button class="op-button" id="calc-times" name="button" value="times">
+					&times;
+				</button>
+			</div>
+			<div class="row">
+				<button class="hidden-button">
+				</button>
+				<button class="digit-button" id="calc-key-0" name="button" value="0">
+					0
+				</button>
+				<button class="op-button" id="calc-equals" name="button" value="equals">
+					&equals;
+				</button>
+				<button class="op-button" id="calc-divide" name="button" value="divide">
+					&divide;
+				</button>
+			</div>
+			{% csrf_token %}
+		</form>
+
+
+
+
+
+		<div class="instructions">
+			<br />
+			<br />
+			Usage: <br />
+			Calculator follows behavior in tables below. Division by zero is undefined and will reset the state if attempted. <br />
+			You must enter a button before an operation, and you must enter a new
+			number after pressing equals. You cannot continue operation with result. 
+			<br />
+			Operations are interpreted as they are encountered, i.e. there is no operator precedence.
+			<table>
+				<tr>
+					<td class="head"> Button Pressed </td>
+					<td> 6 </td>
+					<td> 8 </td>
+					<td> &minus; </td>
+					<td> 9 </td>
+					<td> 7 </td>
+					<td> &equals; </td>
+					<td> 1 </td>
+					<td> 5 </td>
+					<td> &divide; </td>
+					<td> 1 </td>
+					<td> 3 </td>
+					<td> &equals; </td>
+				</tr>
+				<tr>
+					<td class= "head"> Display </td>
+					<td> 6 </td>
+					<td> 68 </td>
+					<td> 68 </td>
+					<td> 9 </td>
+					<td> 97 </td>
+					<td> -29 </td>
+					<td> 1 </td>
+					<td> 15 </td>
+					<td> 15 </td>
+					<td> 1 </td>
+					<td> 13 </td>
+					<td> 1 </td>
+				</tr>
+			</table>
+			<table>
+				<tr>
+					<td class="head"> Button Pressed </td>
+					<td> 2 </td>
+					<td> 4 </td>
+					<td> &plus; </td>
+					<td> 1 </td>
+					<td> 9 </td>
+					<td> &times; </td>
+					<td> 2 </td>
+					<td> 0 </td>
+					<td> &minus; </td>
+					<td> 1 </td>
+					<td> 0 </td>
+					<td> &equals; </td>
+				</tr>
+				<tr>
+					<td class= "head"> Display </td>
+					<td> 2 </td>
+					<td> 24 </td>
+					<td> 24 </td>
+					<td> 1 </td>
+					<td> 19 </td>
+					<td> 43 </td>
+					<td> 2 </td>
+					<td> 20 </td>
+					<td> 860 </td>
+					<td> 1 </td>
+					<td> 10 </td>
+					<td> 850 </td>
+				</tr>
+			</table>
+		</div>
+	</body>
+
+</html>
